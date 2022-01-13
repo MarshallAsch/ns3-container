@@ -22,6 +22,8 @@ WORKDIR /ns3
 
 ENTRYPOINT ["/ns3/entrypoint.sh"]
 
+ENV NS3_ROOT=/ns3/ns-allinone-${NS3_VERSION}/ns-${NS3_VERSION}
+
 RUN apt-get update && apt-get install -y \
     g++ \
     python3 \
