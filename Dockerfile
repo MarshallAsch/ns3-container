@@ -44,12 +44,12 @@ RUN apt-get update && apt-get install -y \
     gsl-bin \
     libgsl0-dev
 
+RUN wget http://www.nsnam.org/release/ns-allinone-${NS3_VERSION}.tar.bz2 && \
+    tar xjf ns-allinone-${NS3_VERSION}.tar.bz2
+
 ENV BUILD_PROFILE=$BUILD_PROFILE
 ENV NS3_VERSION=$NS3_VERSION
 ENV NS3_ROOT=/ns3/ns-allinone-${NS3_VERSION}/ns-${NS3_VERSION}
-
-RUN wget http://www.nsnam.org/release/ns-allinone-${NS3_VERSION}.tar.bz2 && \
-    tar xjf ns-allinone-${NS3_VERSION}.tar.bz2
 
 COPY entrypoint.sh entrypoint.sh
 
