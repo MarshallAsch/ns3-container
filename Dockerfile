@@ -2,14 +2,9 @@ FROM ubuntu:focal
 
 ARG NS3_VERSION=3.32
 ARG DEBIAN_FRONTEND=noninteractive
-ENV NS3_VERSION=$NS3_VERSION
-
 ARG BUILD_PROFILE=debug
-ENV BUILD_PROFILE=$BUILD_PROFILE
-
 
 LABEL org.opencontainers.version="v1.0.0"
-
 LABEL org.opencontainers.image.authors="Marshall Asch <masch@uoguelph.ca> (https://marshallasch.ca)"
 LABEL org.opencontainers.image.url="https://github.com/MarshallAsch/ns3-container.git"
 LABEL org.opencontainers.image.source="https://github.com/MarshallAsch/ns3-container.git"
@@ -22,11 +17,8 @@ WORKDIR /ns3
 
 ENTRYPOINT ["/ns3/entrypoint.sh"]
 
-ENV NS3_ROOT=/ns3/ns-allinone-${NS3_VERSION}/ns-${NS3_VERSION}
-
 RUN apt-get update && apt-get install -y \
     g++ \
-    python3 \
     python3-dev \
     pkg-config \
     sqlite \
@@ -38,23 +30,23 @@ RUN apt-get update && apt-get install -y \
     cvs \
     bzr \
     unrar \
-    libxml2 \
     libxml2-dev \
     make \
     cmake \
     build-essential \
     unzip \
-    mercurial \
     wget \
     qt5-default \
     python3-gi-cairo \
     gir1.2-gtk-3.0 \
     python3-gi \
     python3-pygraphviz \
-    python-dev \
     gsl-bin \
     libgsl0-dev
 
+ENV BUILD_PROFILE=$BUILD_PROFILE
+ENV NS3_VERSION=$NS3_VERSION
+ENV NS3_ROOT=/ns3/ns-allinone-${NS3_VERSION}/ns-${NS3_VERSION}
 
 RUN wget http://www.nsnam.org/release/ns-allinone-${NS3_VERSION}.tar.bz2 && \
     tar xjf ns-allinone-${NS3_VERSION}.tar.bz2
