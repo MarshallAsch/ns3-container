@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - 'main'
+    paths:
+     - 'Dockerfile'
+
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -22,7 +25,6 @@ jobs:
           images: marshallasch/ns3
           tags: |
             type=raw,value=${{ matrix.ns3 }}-${{ matrix.profile }}
-            type=raw,value=ns3-${{ matrix.ns3 }}-${{ matrix.profile }}
             type=semver,pattern={{version}}-${{ matrix.ns3 }}-${{ matrix.profile }}
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1

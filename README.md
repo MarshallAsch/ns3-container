@@ -9,7 +9,7 @@
 # NS-3 Container
 
 This will create a docker container for the [ns-3](https://www.nsnam.org/) network simulator. 
-This repository is designed to be used as a base container for simulation models, expriments and CI piplines for ns3. 
+This repository is designed to be used as a base container for simulation models, experiments and CI pipelines for ns3. 
 
 This action can be used to check your code for multiple versions of ns-3, currently this will support
 `ns-3.32`, `ns-3.33`, `ns-3.34`, and `ns-3.35`. 
@@ -69,7 +69,7 @@ This Docker image can be used in one of three ways:
 ### As a base image
 
 The main purpose of this image is to be used as a base image for other containers. 
-This image will provide the base ns-3 installation and all of its dependancies. 
+This image will provide the base ns-3 installation and all of its dependencies. 
 Below is an example docker file showing how this base could be used:
 
 ```dockerfile
